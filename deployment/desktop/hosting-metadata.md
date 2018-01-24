@@ -56,9 +56,9 @@ Writing /tmp/asb-md/appstream-screenshots.tar...
 Done!
 ```
 
-	The actual build output will depend on your compose server
-    configuration. At this point you can also verify the application
-    is visible in the *yourcompanyname.xml.gz* file.
+The actual build output will depend on your compose server
+configuration. At this point you can also verify the application
+is visible in the *yourcompanyname.xml.gz* file.
 
 1. Next, take the generated XML and the tarball of icons and add it to
    the *repomd.xml* master document, so that GNOME Software
@@ -77,8 +77,8 @@ $ modifyrepo_c					\
 	x86_64/repodata/
 ```
 
-	Deploying this metadata allows GNOME Software to add the
-	application metadata the next time the repository is refreshed.
+Deploying this metadata allows GNOME Software to add the
+application metadata the next time the repository is refreshed.
 
 ## Hosting a DNF repository on Github
 
@@ -107,7 +107,7 @@ $ git push -u origin master
 https://raw.githubusercontent.com/username/reponame/master/noarch/repodata/repomd.xml
 ```
 
-	Copy that URL, as you'll need it to create the *.repo* file that distributions and users use to reach your new repository.
+Copy that URL, as you'll need it to create the *.repo* file that distributions and users use to reach your new repository.
 	
 1. Create a *.repo* file using this example as a template, and edit it to match your data:
 
@@ -120,8 +120,7 @@ enabled=1
 enabled_metadata=1
 ```
 
-	For more information on this format, consult the [repository
-    options in the DNF configuration documentation](http://dnf.readthedocs.io/en/latest/conf_ref.html#repo-options).
+For more information on this format, consult the [repository options in the DNF configuration documentation](http://dnf.readthedocs.io/en/latest/conf_ref.html#repo-options).
 	
 1. Copy this file to */etc/yum.repos.d* on your computer and load up
    GNOME Software. Click on the *Updates* button in GNOME Software,
