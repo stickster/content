@@ -10,7 +10,7 @@ description: >
 
 The GNOME Software app provides a cross-distribution software center from which users can browse and manage apps for their Linux system.  This guide will help you produce the necessary metadata so your app can be listed in the software center.  Note that this guide covers apps as opposed to other system add-on components such as drivers and codecs.
 
-![GNOME Software](/content/deployment/desktop/steam-gnome-software.png  "Example of Steam listing in GNOME Software")
+![GNOME Software](/deployment/desktop/steam-gnome-software.png  "Example of Steam listing in GNOME Software")
 
 This guide assumes an application package called Frobnicator, which contains an executable called *frob*.  It also assumes you are running Fedora Workstation with the standard GNOME desktop environment.
 
