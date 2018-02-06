@@ -28,15 +28,15 @@ $ sudo dnf install createrepo_c libappstream-glib-builder flatpak-builder
 1. Run these commands to create the initial metadata for source
    packages and the standard *x86_64* architecture:
 
-	```console
+```console
 $ createrepo_c --no-database --simple-md-filenames SRPMS/
 $ createrepo_c --no-database --simple-md-filenames x86_64/
-	```
+```
 
 1. Next, generate the AppStream XML using the *appstream-builder*
    tool:
 
-   ```console
+```console
 $ appstream-builder				\
 	--origin=yourcompanyname		\
 	--basename=appstream			\
@@ -54,17 +54,17 @@ Writing /tmp/asb-md/appstream.xml.gz...
 Writing /tmp/asb-md/appstream-icons.tar.gz...
 Writing /tmp/asb-md/appstream-screenshots.tar...
 Done!
-   ```
+```
 
-	The actual build output will depend on your compose server
-    configuration. At this point you can also verify the application
-    is visible in the *yourcompanyname.xml.gz* file.
+The actual build output will depend on your compose server
+configuration. At this point you can also verify the application
+is visible in the *yourcompanyname.xml.gz* file.
 
 1. Next, take the generated XML and the tarball of icons and add it to
    the *repomd.xml* master document, so that GNOME Software
    automatically downloads the content for searching:
 
-	```console
+```console
 $ modifyrepo_c					\
 	--no-compress				\
 	--simple-md-filenames			\
@@ -75,10 +75,10 @@ $ modifyrepo_c					\
 	--simple-md-filenames			\
 	/tmp/asb-md/appstream-icons.tar.gz	\
 	x86_64/repodata/
-	```
+```
 
-	Deploying this metadata allows GNOME Software to add the
-	application metadata the next time the repository is refreshed.
+Deploying this metadata allows GNOME Software to add the
+application metadata the next time the repository is refreshed.
 
 ## Hosting a DNF repository on Github
 
@@ -88,14 +88,14 @@ While Github isn't ideal for hosting DNF repositories, this method currently wor
    project on Github. Then use the follow commands to import your
    repository into Github.
 
-	```console
+```console
 $ cd ~/src/myrepository
 $ git init
 $ git add -A
 $ git commit -a -m "first commit"
 $ git remote add origin git@github.com:yourgitaccount/myrepo.git
 $ git push -u origin master
-	```
+```
 
 1. Next, go to the Github web interface and browse down in the file
    tree until you find the file called *repomd.xml*, and click on
@@ -103,25 +103,24 @@ $ git push -u origin master
    *Raw*. Click that to get the raw version of the XML file.  In the
    URL bar of your browser you should see a URL like this:
 
-	```console
+```console
 https://raw.githubusercontent.com/username/reponame/master/noarch/repodata/repomd.xml
-	```
+```
 
-	Copy that URL, as you'll need it to create the *.repo* file that distributions and users use to reach your new repository.
+Copy that URL, as you'll need it to create the *.repo* file that distributions and users use to reach your new repository.
 	
 1. Create a *.repo* file using this example as a template, and edit it to match your data:
 
-	```console
+```console
 [frobnicator]
 name=Frobnicator 3D generator
 baseurl=https://raw.githubusercontent.com/username/reponame/master/noarch
 gpgcheck=0
 enabled=1
 enabled_metadata=1
-	```
+```
 
-	For more information on this format, consult the [repository
-    options in the DNF configuration documentation](http://dnf.readthedocs.io/en/latest/conf_ref.html#repo-options).
+For more information on this format, consult the [repository options in the DNF configuration documentation](http://dnf.readthedocs.io/en/latest/conf_ref.html#repo-options).
 	
 1. Copy this file to */etc/yum.repos.d* on your computer and load up
    GNOME Software. Click on the *Updates* button in GNOME Software,
@@ -182,10 +181,10 @@ Github isn't ideal for hosting Flatpak repositories, but this method currently w
 
 1. Next, import your repository into Github.
 
-	```console
+```console
 $ git remote add origin git@github.com:yourgitaccount/myrepo.git
 $ git push -u origin master
-	```
+```
 
 Now you should be able to refer to your repo with a
 *raw.githubusercontent.com/* URL as shown in the flatpakrepo example

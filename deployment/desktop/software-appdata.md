@@ -10,7 +10,7 @@ description: >
 
 The GNOME Software app provides a cross-distribution software center from which users can browse and manage apps for their Linux system.  This guide will help you produce the necessary metadata so your app can be listed in the software center.  Note that this guide covers apps as opposed to other system add-on components such as drivers and codecs.
 
-![GNOME Software](/content/deployment/desktop/steam-gnome-software.png  "Example of Steam listing in GNOME Software")
+![GNOME Software](/deployment/desktop/steam-gnome-software.png  "Example of Steam listing in GNOME Software")
 
 This guide assumes an application package called Frobnicator, which contains an executable called *frob*.  It also assumes you are running Fedora Workstation with the standard GNOME desktop environment.
 
@@ -30,7 +30,7 @@ $ sudo dnf install desktop-file-utils appstream-util gnome-shell-extension-scree
    The required fields are *Name*, *Comment*, *Icon*, *Categories*,
    *Keywords*, and *Exec*.  Here is an example:
    
-   ```console
+```console
 [Desktop Entry]
 Type=Application
 Name=Frobnicator
@@ -40,7 +40,7 @@ Exec=frob %f
 MimeType=application/x-frob;
 Categories=Graphics;3DGraphics;Engineering;
 Keywords=3d;solid;geometry;csg;model;stl;
-	```
+```
 	
    Your package should install this file in the
    */usr/share/application* folder.  You may assign the desktop file a
@@ -58,9 +58,9 @@ Keywords=3d;solid;geometry;csg;model;stl;
    
 1. Verify the desktop file with the *desktop-file-validate* command:
 
-   ```console
+```console
 $ desktop-file-validate org.example.Frobnicator.desktop
-   ```
+```
    
 ## Create an AppData file
 
@@ -75,7 +75,7 @@ the software center.
    to provide correct data for your application in this file.  Here is
    an example for the Frobnicator app:
    
-   ```console
+```console
     <?xml version="1.0" encoding="UTF-8"?>
     <component type="desktop">
       <id>org.frobnicator.Frobnicator.desktop</id>
@@ -107,7 +107,7 @@ the software center.
         <mimetype>application/x-frob</mimetype>
       </mimetypes>
     </component>
-	```
+```
 
 1. Next, make the appropriate 16:9 aspect ratio screenshots for your
    package, showing the application in action.  To make screenshot
@@ -121,9 +121,9 @@ the software center.
 
 1. Validate the AppData XML file:
 
-	```console
+```console
 $ appstream-util validate foo.appdata.xml
-	```
+```
 
 NOTE: Do not install two applications with one single package. If
 necessary, split up a package into multiple subpackages or mark one
